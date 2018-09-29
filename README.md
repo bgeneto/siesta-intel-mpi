@@ -1,8 +1,10 @@
 ## 0. Purpose 
 
-This document contains step-by-step instructions to proceed with a (hopefully) successfull installation of the SIESTA (Spanish Initiative for Electronic Simulations with Thousands of Atoms) software on Linux (tested with Ubuntu 18.04) using Intel Compilers and intel MPI tools (tested with Intel Parallel Studio 2019). 
+This document contains step-by-step instructions to proceed with a (hopefully) successful installation of the SIESTA (Spanish Initiative for Electronic Simulations with Thousands of Atoms) software on Linux (tested with Ubuntu 18.04) using the Intel Compilers and Intel MPI implementation for parallelism. 
 
-## 1. Install prerequisite softwares
+To achieve a parallel build of SIESTA you should ﬁrst determine which type of parallelism you need. It is advised to use MPI for calculations with a moderate number of cores. For hundreds of threads, hybrid parallelism using both MPI and OpenMP may be required.
+
+## 1. Install prerequisite software
 
 ```
 sudo apt install make g++ gfortran openmpi-common openmpi-bin \
@@ -11,14 +13,7 @@ sudo apt install make g++ gfortran openmpi-common openmpi-bin \
 
 ## 2. Create required installation folders
 
-*Note1: In what follows, we assume that your user has write permission to the following install directories (that's why we use chown/chmod below). Additionaly, your user must be in the sudoers file.*
-
-We also assume that you have previouly installed and configured Intel Compilers and Tools correctly, i.e., that ifort, icc etc... are in your PATH by doing something like this in your `/etc/bash.bashrc` file 
-
-```
-source /opt/intel/parallel_studio_xe_2019/psxevars.sh > /dev/null 2>&1
-```
-
+*Note: In what follows, we assume that your user has write permission to the following install directories (that's why we use chown/chmod below). Additionally, your user must be in the sudoers file.*
 
 ```
 SIESTA_DIR=/opt/siesta
@@ -30,13 +25,15 @@ sudo chown -R root:sudo $SIESTA_DIR $OPENBLAS_DIR $SCALAPACK_DIR
 sudo chmod -R 775 $SIESTA_DIR $OPENBLAS_DIR $SCALAPACK_DIR
 ```
 
+We also assume that you have previouly installed and configured Intel Compilers and Tools correctly, i.e., that ifort, icc etc... are in your PATH by doing something like this in your `/etc/bash.bashrc` file or directly via bash:
+
+```
+source /opt/intel/parallel_studio_xe_2019/psxevars.sh > /dev/null 2>&1
+```
+
 ## 3. Install prerequisite libraries 
 
-First let's `make` runs in parallel by default to speed-up things a little... 
-
-```
-alias make='make -j'
-```
+In order to run siesta in parallel using MPI you need non-threaded blas and lapack libraries along with a standard scalapack library.
 
 #### 3.1. Install single-threaded openblas library from source
 
@@ -82,7 +79,7 @@ wget https://github.com/ElectronicStructureLibrary/flook/releases/download/v0.7.
 (./install_flook.bash 2>&1) | tee install_flook.log
 ```
 
-Install netcdf dependency:
+Install netcdf dependency (be patient):
 
 ```
 wget https://zlib.net/zlib-1.2.11.tar.gz
@@ -91,6 +88,8 @@ wget -O netcdf-c-4.4.1.1.tar.gz https://github.com/Unidata/netcdf-c/archive/v4.4
 wget -O netcdf-fortran-4.4.4.tar.gz https://github.com/Unidata/netcdf-fortran/archive/v4.4.4.tar.gz
 (./install_netcdf4.bash 2>&1) | tee install_netcdf4.log
 ```
+
+If anything goes wrong in this step you can check the `install_netcdf4.log` log file.
 
 #### 4.2. Create your custom 'arch.make' file for GCC + MPI build 
 
@@ -111,7 +110,37 @@ make OBJDIR=ObjMPI
 
 ## 5. Revert to default directory ownership and permission 
 
+Just in case...
+
 ```
 sudo chown -R root:root $SIESTA_DIR $OPENBLAS_DIR $SCALAPACK_DIR
 sudo chmod -R 755 $SIESTA_DIR $OPENBLAS_DIR $SCALAPACK_DIR
+```
+
+## 6. Test siesta
+
+Let's copy siesta `Test` directory to our home (where we have all necessary permissions): 
+
+```
+mkdir $HOME/siesta
+cp -r $SIESTA_DIR/siesta-4.1-b3/Tests/ $HOME/siesta/Tests
+```
+
+Now create a symbolic link to siesta executable 
+
+```
+cd $HOME/siesta
+ln -s $SIESTA_DIR/siesta-4.1-b3/ObjMPI/siesta
+```
+
+Finally run some test job:
+
+```
+cd $HOME/siesta/Tests/h2o_dos/
+make
+```
+
+We should see the following message:
+```
+===> SIESTA finished successfully
 ```
