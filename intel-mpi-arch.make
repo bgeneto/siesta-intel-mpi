@@ -50,13 +50,6 @@ FPPFLAGS += -DMPI
 
 LIBS =
 
-# flook
-INCFLAGS += -I/opt/siesta/siesta-4.1-b3/Docs/build/flook/0.7.0/include
-LDFLAGS += -L/opt/siesta/siesta-4.1-b3/Docs/build/flook/0.7.0/lib -Wl,-rpath=/opt/siesta/siesta-4.1-b3/Docs/build/flook/0.7.0/lib
-LIBS += -lflookall -ldl
-COMP_LIBS += libfdict.a
-FPPFLAGS += -DSIESTA__FLOOK
-
 # netcdf
 INCFLAGS += -I/opt/siesta/siesta-4.1-b3/Docs/build/netcdf/4.4.1.1/include
 LDFLAGS += -L/opt/siesta/siesta-4.1-b3/Docs/build/zlib/1.2.11/lib -Wl,-rpath=/opt/siesta/siesta-4.1-b3/Docs/build/zlib/1.2.11/lib
