@@ -70,6 +70,7 @@ MKL_LIBS = -Wl,--start-group $(INTEL_LIBS) \
            -Wl,--end-group -lpthread -lm
 MKL_INCLUDE = -I$(MKL)/include -I$(MKL)/include/intel64/lp64
 INCFLAGS += $(MPI_INCLUDE) $(MKL_INCLUDE)
+LIBS += $(MKL_LIBS)
 
 # Dependency rules ---------
 
