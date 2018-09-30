@@ -102,8 +102,8 @@ sudo chmod -R 755 $SIESTA_DIR
 Let's copy siesta `Test` directory to our home (where we have all necessary permissions): 
 
 ```
-mkdir $HOME/siesta
-cp -r $SIESTA_DIR/siesta-4.1-b3/Tests/ $HOME/siesta/Tests
+mkdir $HOME/siesta/
+cp -r $SIESTA_DIR/siesta-4.1-b3/Tests/ $HOME/siesta/Tests/
 ```
 
 Now create a symbolic link to siesta executable 
@@ -125,4 +125,4 @@ We should see the following message:
 ===> SIESTA finished successfully
 ```
 
-But pain attention (monitor) to the number of threads used. If you requested only two threads (np = 2) and the job is consuming all your threads then you have a configuration problem in your libraries (common for me with Intel compilers, GCC works flawlessly).
+Pain attention to the number of threads used. If you requested only two threads (-np 2) and the job is consuming all your threads then you have a configuration problem in your libraries (common while mixing Intel compilers with GCC).
