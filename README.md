@@ -59,15 +59,7 @@ export CPP='icc -E'
 export CXXCPP='icpc -E'
 ```
 
-Now we build flook (lua support, if desired):
-
-```
-cd ./siesta-4.1-b3/Docs
-wget https://github.com/ElectronicStructureLibrary/flook/releases/download/v0.7.0/flook-0.7.0.tar.gz
-(./install_flook.bash 2>&1) | tee install_flook.log
-```
-
-Install netcdf dependency (be patient, grab a coffee):
+Now build netcdf with Intel compilers (be patient, grab a coffee):
 
 ```
 wget https://zlib.net/zlib-1.2.11.tar.gz
