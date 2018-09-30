@@ -37,6 +37,7 @@ tar xzf ./siesta-4.1-b3.tar.gz && rm ./siesta-4.1-b3.tar.gz
 
 #### 3.1. Install siesta library dependencies from source
 
+We need to setup the build environment first:
 ```
 export CC=icc
 export CXX=icpc
@@ -48,6 +49,11 @@ export F90=ifort
 export FFLAGS='-O3 -xHost -ip -no-prec-div -static-intel'
 export CPP='icc -E'
 export CXXCPP='icpc -E'
+```
+
+Now we build flook (lua support, if desired):
+
+```
 cd ./siesta-4.1-b3/Docs
 wget https://github.com/ElectronicStructureLibrary/flook/releases/download/v0.7.0/flook-0.7.0.tar.gz
 (./install_flook.bash 2>&1) | tee install_flook.log
@@ -71,15 +77,15 @@ First create a custom target arch directory:
 
 ```
 mkdir $SIESTA_DIR/siesta-4.1-b3/ObjIntel && cd $SIESTA_DIR/siesta-4.1-b3/ObjIntel
-wget -O arch.make https://raw.githubusercontent.com/bgeneto/siesta4.1-gnu-openmpi/master/gnu-openmpi-arch.make
+wget -O arch.make https://raw.githubusercontent.com/bgeneto/siesta4.1-intel/master/intel-mpi-arch.make
 ```
 
 #### 3.3. Build siesta executable 
 
 ```
-cd $SIESTA_DIR/siesta-4.1-b3/ObjMPI
+cd $SIESTA_DIR/siesta-4.1-b3/ObjIntel
 sh ../Src/obj_setup.sh
-make OBJDIR=ObjMPI
+make OBJDIR=ObjIntel
 ```
 
 ## 5. Revert to default directory ownership and permission 
@@ -104,7 +110,7 @@ Now create a symbolic link to siesta executable
 
 ```
 cd $HOME/siesta
-ln -s $SIESTA_DIR/siesta-4.1-b3/ObjMPI/siesta
+ln -s $SIESTA_DIR/siesta-4.1-b3/ObjIntel/siesta
 ```
 
 Finally run some test job:
