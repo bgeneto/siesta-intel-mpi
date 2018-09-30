@@ -67,7 +67,7 @@ wget https://github.com/ElectronicStructureLibrary/flook/releases/download/v0.7.
 (./install_flook.bash 2>&1) | tee install_flook.log
 ```
 
-Install netcdf dependency (be patient):
+Install netcdf dependency (be patient, grab a coffee):
 
 ```
 wget https://zlib.net/zlib-1.2.11.tar.gz
