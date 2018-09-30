@@ -101,8 +101,8 @@ make OBJDIR=ObjIntel
 Just in case...
 
 ```
-sudo chown -R root:root $SIESTA_DIR $OPENBLAS_DIR $SCALAPACK_DIR
-sudo chmod -R 755 $SIESTA_DIR $OPENBLAS_DIR $SCALAPACK_DIR
+sudo chown -R root:root $SIESTA_DIR
+sudo chmod -R 755 $SIESTA_DIR
 ```
 
 ## 6. Test siesta
