@@ -17,7 +17,7 @@
 
 SIESTA_ARCH = x86_64_MPI_INTEL
 
-CC = mpicc
+CC = mpiicc
 FPP = $(FC) -E -P
 FC = mpiifort
 FC_SERIAL = ifort
