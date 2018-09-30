@@ -10,7 +10,7 @@ To achieve a parallel build of SIESTA you should ﬁrst determine which type of 
 sudo apt install libreadline-dev -y
 ```
 
-## 2. Create required installation folders
+## 2. Create required installation folder
 
 *Note: In what follows, we assume that your user has write permission to the following install directories (that's why we use chown/chmod below). Additionally, your user must be in the sudoers file.*
 
@@ -25,6 +25,14 @@ We also assume that you have previouly installed and configured Intel Compilers 
 
 ```
 source /opt/intel/parallel_studio_xe_2019/psxevars.sh > /dev/null 2>&1
+```
+
+Ensure that Intel environment variables are correctly setup with: 
+
+```
+which mpicc 
+which mpiifort 
+which mpirun
 ```
 
 ## 3. Install siesta from source
