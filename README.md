@@ -89,13 +89,14 @@ sh ../Src/obj_setup.sh
 make OBJDIR=ObjIntel
 ```
 
-## 5. Test siesta
+## 4. Test siesta
 
+Exit sudo, i.e., return to your normal user. 
 Let's copy siesta `Test` directory to our home (where we have all necessary permissions): 
 
 ```
 mkdir $HOME/siesta/
-cp -r $SIESTA_DIR/siesta-4.1-b3/Tests/ $HOME/siesta/Tests/
+sudo cp -r $SIESTA_DIR/siesta-4.1-b3/Tests/ $HOME/siesta/Tests/
 ```
 
 Now create a symbolic link to siesta executable 
