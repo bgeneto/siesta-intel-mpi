@@ -6,7 +6,7 @@ To achieve a parallel build of SIESTA you should ﬁrst determine which type of 
 
 ## 1. Install prerequisite software
 
-We assume you are running the commands below as root by doing something like that: `sudo su`.
+We assume you are running the commands below as `root` or doing something like `sudo su`.
 
 ```
 apt install libreadline-dev m4 -y
