@@ -119,3 +119,10 @@ We should see the following message:
 ```
 
 Pain attention to the number of threads used. If you requested only two threads (-np 2) and the job is consuming all your threads then you have a configuration problem in your libraries (common while mixing Intel compilers with GCC).
+
+If you get a "Fatal error in MPI_Recv: Other MPI error, error stack" then issue: 
+
+```
+echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+I_MPI_SHM_LMT=shm
+```
