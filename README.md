@@ -6,8 +6,10 @@ To achieve a parallel build of SIESTA you should ﬁrst determine which type of 
 
 ## 1. Install prerequisite software
 
+We assume you are running the commands below as root by doing something like that: `sudo su`.
+
 ```
-sudo apt install libreadline-dev m4 -y
+apt install libreadline-dev m4 -y
 ```
 
 ## 2. Create required installation folder
@@ -16,9 +18,7 @@ sudo apt install libreadline-dev m4 -y
 
 ```
 SIESTA_DIR=/opt/siesta
-sudo mkdir $SIESTA_DIR
-sudo chown -R root:sudo $SIESTA_DIR
-sudo chmod -R 775 $SIESTA_DIR
+mkdir $SIESTA_DIR
 ```
 
 We also assume that you have previouly installed and configured Intel Compilers and Tools correctly, i.e., that ifort, icc etc... are in your PATH by doing something like this in your `/etc/bash.bashrc` file or directly via bash:
@@ -89,16 +89,7 @@ sh ../Src/obj_setup.sh
 make OBJDIR=ObjIntel
 ```
 
-## 5. Revert to default directory ownership and permission 
-
-Just in case...
-
-```
-sudo chown -R root:root $SIESTA_DIR
-sudo chmod -R 755 $SIESTA_DIR
-```
-
-## 6. Test siesta
+## 5. Test siesta
 
 Let's copy siesta `Test` directory to our home (where we have all necessary permissions): 
 
