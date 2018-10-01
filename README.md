@@ -77,16 +77,16 @@ If anything goes wrong in this step you can check the `install_netcdf4.log` log 
 First create a custom target arch directory:
 
 ```
-mkdir $SIESTA_DIR/siesta-4.1-b3/ObjIntel && cd $SIESTA_DIR/siesta-4.1-b3/ObjIntel
+cd $SIESTA_DIR/siesta-4.1-b3/Obj
 wget -O arch.make https://raw.githubusercontent.com/bgeneto/siesta4.1-intel/master/intel-mpi-arch.make
 ```
 
 #### 3.3. Build siesta executable 
 
 ```
-cd $SIESTA_DIR/siesta-4.1-b3/ObjIntel
+cd $SIESTA_DIR/siesta-4.1-b3/Obj
 sh ../Src/obj_setup.sh
-make OBJDIR=ObjIntel
+make OBJDIR=Obj
 ```
 
 ## 4. Test siesta
@@ -103,7 +103,7 @@ Now create a symbolic link to siesta executable
 
 ```
 cd $HOME/siesta
-ln -s $SIESTA_DIR/siesta-4.1-b3/ObjIntel/siesta
+ln -s $SIESTA_DIR/siesta-4.1-b3/Obj/siesta
 ```
 
 Finally run some test job:
