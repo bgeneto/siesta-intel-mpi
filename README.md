@@ -45,7 +45,7 @@ tar xzf ./siesta-4.1-b3.tar.gz && rm ./siesta-4.1-b3.tar.gz
 
 #### 3.1. Install siesta library dependencies from source
 
-We need to setup the build environment first:
+We need to prepare the build environment for using Intel compilers:
 ```
 export CC=icc
 export CXX=icpc
@@ -62,6 +62,7 @@ export CXXCPP='icpc -E'
 Now build netcdf with Intel compilers (be patient, grab a coffee):
 
 ```
+cd $SIESTA_DIR/siesta-4.1-b3/Docs 
 wget https://zlib.net/zlib-1.2.11.tar.gz
 wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8/hdf5-1.8.18/src/hdf5-1.8.18.tar.bz2
 wget -O netcdf-c-4.4.1.1.tar.gz https://github.com/Unidata/netcdf-c/archive/v4.4.1.1.tar.gz
