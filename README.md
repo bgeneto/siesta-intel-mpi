@@ -6,15 +6,13 @@ To achieve a parallel build of SIESTA you should ﬁrst determine which type of 
 
 ## 1. Install prerequisite software
 
-We assume you are running the commands below as `root` or doing something like `sudo su`.
+*Note: In what follows, we assume you are running all the commands below as `root` by doing something like `sudo su`.*
 
 ```
 apt install libreadline-dev m4 -y
 ```
 
 ## 2. Create required installation folder
-
-*Note: In what follows, we assume that your user has write permission to the following install directories (that's why we use chown/chmod below). Additionally, your user must be in the sudoers file.*
 
 ```
 SIESTA_DIR=/opt/siesta
@@ -27,7 +25,7 @@ We also assume that you have previouly installed and configured Intel Compilers 
 source /opt/intel/parallel_studio_xe_2019/psxevars.sh > /dev/null 2>&1
 ```
 
-Ensure that Intel environment variables are correctly setup with: 
+Ensure that Intel environment variables are properly set up with (check if path points to intel install dir): 
 
 ```
 which mpicc 
@@ -72,9 +70,7 @@ wget -O netcdf-fortran-4.4.4.tar.gz https://github.com/Unidata/netcdf-fortran/ar
 
 If anything goes wrong in this step you can check the `install_netcdf4.log` log file.
 
-#### 3.2. Create your custom 'arch.make' file for GCC + MPI build 
-
-First create a custom target arch directory:
+#### 3.2. Download our custom 'arch.make' file for Intel MPI build 
 
 ```
 cd $SIESTA_DIR/siesta-4.1-b3/Obj
@@ -91,7 +87,7 @@ make OBJDIR=Obj
 
 ## 4. Test siesta
 
-Exit sudo, i.e., return to your normal user. 
+`exit` sudo, i.e., return to your normal user. 
 Let's copy siesta `Test` directory to our home (where we have all necessary permissions): 
 
 ```
