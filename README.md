@@ -9,6 +9,7 @@ To achieve a parallel build of SIESTA you should ﬁrst determine which type of 
 *Note: In what follows, we assume you are running all the commands below as `root` by doing something like `sudo su`.*
 
 ```
+sudo su
 apt install libreadline-dev m4 -y
 ```
 
@@ -91,6 +92,8 @@ make OBJDIR=Obj
 Let's copy siesta `Test` directory to our home (where we have all necessary permissions): 
 
 ```
+exit
+SIESTA_DIR=/opt/siesta
 mkdir $HOME/siesta/
 sudo cp -rp $SIESTA_DIR/siesta-4.1-b3/Tests/ $HOME/siesta/Tests/
 ```
