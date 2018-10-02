@@ -74,7 +74,7 @@ If anything goes wrong in this step you can check the `install_netcdf4.log` log 
 
 ```
 cd $SIESTA_DIR/siesta-4.1-b3/Obj
-wget -O arch.make https://raw.githubusercontent.com/bgeneto/siesta4.1-intel/master/intel-mpi-arch.make
+wget -O arch.make https://raw.githubusercontent.com/bgeneto/siesta-intel-mpi/master/intel-mpi-arch.make
 ```
 
 #### 3.3. Build siesta executable 
