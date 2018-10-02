@@ -96,8 +96,7 @@ chmod -R 755 $SIESTA_DIR
 
 ## 5. Test siesta
 
-`exit` sudo, i.e., return to your normal user. 
-Let's copy siesta `Test` directory to our home (where we have all necessary permissions): 
+Let's copy siesta `Test` directory to our home (where we have all necessary permissions). But `exit` sudo first, i.e., return to your normal user.  
 
 ```
 exit
