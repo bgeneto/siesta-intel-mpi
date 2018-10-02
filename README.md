@@ -85,8 +85,16 @@ cd $SIESTA_DIR/siesta-4.1-b3/Obj
 sh ../Src/obj_setup.sh
 make OBJDIR=Obj
 ```
+## 4. Change permissions
 
-## 4. Test siesta
+Allow other users access to `SIESTA_DIR`
+
+```
+chown -R root:root $SIESTA_DIR
+chmod -R 755 $SIESTA_DIR
+``` 
+
+## 5. Test siesta
 
 `exit` sudo, i.e., return to your normal user. 
 Let's copy siesta `Test` directory to our home (where we have all necessary permissions): 
