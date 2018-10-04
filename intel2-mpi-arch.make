@@ -59,7 +59,10 @@ COMP_LIBS += libncdf.a libfdict.a
 FPPFLAGS += -DCDF -DNCDF -DNCDF_4
 
 # mkl with scalapack
-LIBS += -lmkl_scalapack_lp64 -lmkl_blacs_intelmpi_lp64 -lpthread -lm -ldl
+MKLROOT = $(INSDIR)/intel/compilers_and_libraries/linux/mkl
+INCFLAGS += -I${MKLROOT}/include
+LDFLAGS += -L${MKLROOT}/lib/intel64 
+LIBS += -lmkl_scalapack_lp64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lmkl_blacs_intelmpi_lp64 -lpthread -lm -ldl
 
 # Dependency rules ---------
 
