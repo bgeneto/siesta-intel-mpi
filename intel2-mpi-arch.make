@@ -28,7 +28,7 @@ FC_SERIAL = ifort
 MPI_INTERFACE = libmpi_f90.a
 MPI_INCLUDE = .
 
-FFLAGS = -O3 -fPIC -xHost -ip -no-prec-div -mkl=sequential
+FFLAGS = -O3 -fPIC -xHost -ip -no-prec-div
 
 AR = ar
 RANLIB = ranlib
