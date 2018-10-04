@@ -72,7 +72,7 @@ FFLAGS_DEBUG = -g -O1
 # will make an erroneous compilation of atom.f with high optimization
 # levels.
 atom.o: atom.F
-  $(FC) -c $(FFLAGS_DEBUG) $(INCFLAGS) $(FPPFLAGS) $(FPPFLAGS_fixed_F) $<
+	$(FC) -c $(FFLAGS_DEBUG) $(INCFLAGS) $(FPPFLAGS) $(FPPFLAGS_fixed_F) $<
 .c.o:
 	$(CC) -c $(CFLAGS) $(INCFLAGS) $(CPPFLAGS) $<
 .F.o:
