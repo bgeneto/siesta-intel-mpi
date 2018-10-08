@@ -102,7 +102,7 @@ Let's copy siesta `Test` directory to our home (where we have all necessary perm
 exit
 SIESTA_DIR=/opt/siesta
 mkdir $HOME/siesta/
-sudo cp -rp $SIESTA_DIR/siesta-4.1-b3/Tests/ $HOME/siesta/Tests/
+cp -r $SIESTA_DIR/siesta-4.1-b3/Tests/ $HOME/siesta/Tests/
 ```
 
 Now create a symbolic link to siesta executable 
